@@ -2,8 +2,8 @@ type Mods = Record<string, boolean | string>;
 
 const cls = (
    cls: string,
-   mods: Mods,
-   additional: string[]
+   mods: Mods = {},
+   additional: string[] = []
 ): string => {
    return [
       cls,
@@ -13,4 +13,4 @@ const cls = (
          .map(([cls]) => cls),
    ].join(' ');
 };
-export default cls
+export default cls;
