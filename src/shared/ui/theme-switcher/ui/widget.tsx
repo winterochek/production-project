@@ -17,7 +17,7 @@ export default function ThemeSwitcher({ className }: Props) {
          className={cls(cl.ThemeSwitcher, {}, [className])}
          onClick={toggleTheme}
       >
-         {theme === Theme.DARK ? <LightIcon /> : <DarkIcon />}
+         {theme === Theme.LIGHT ? <LightIcon /> : <DarkIcon />}
       </Button>
    );
 }
