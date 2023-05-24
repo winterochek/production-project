@@ -2,6 +2,7 @@ import cls from 'shared/lib/class-names';
 import cl from './styles.module.scss';
 import { useState } from 'react';
 import { ThemeSwitcher } from 'shared/ui/theme-switcher';
+import { LangSwitcher } from 'shared/ui/lang-switcher';
 
 interface Props {
    className?: string;
@@ -17,7 +18,7 @@ export default function SideBar({ className }: Props) {
          <button onClick={onToggle}>toggle</button>
          <div className={cl.switchers}>
             <ThemeSwitcher />
-            {/* <LangSwitcher /> */}
+            <LangSwitcher />
          </div>
       </div>
    );

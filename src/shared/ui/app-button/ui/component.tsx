@@ -18,7 +18,7 @@ export default function Button({
    ...props
 }: Props) {
    return (
-      <button className={cls(cl.button, {}, [className, cl[theme]])} {...props}>
+      <button className={cls(cl.root, {}, [className, cl[theme]])} {...props}>
          {children}
       </button>
    );
