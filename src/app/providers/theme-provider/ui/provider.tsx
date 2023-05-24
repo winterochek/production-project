@@ -1,5 +1,5 @@
 import { MouseEventHandler, useMemo, useState } from 'react';
-import ThemeContext, { LOCAL_STORAGE_THEME_KEY, Theme } from '.';
+import ThemeContext, { LOCAL_STORAGE_THEME_KEY, Theme } from 'app/providers/theme-provider/lib/theme-context';
 
 const defaultTheme =
    (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;

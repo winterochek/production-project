@@ -1,6 +1,6 @@
 type Mods = Record<string, boolean | string>;
 
-export const cls = (
+const cls = (
    cls: string,
    mods: Mods,
    additional: string[]
@@ -13,3 +13,4 @@ export const cls = (
          .map(([cls]) => cls),
    ].join(' ');
 };
+export default cls

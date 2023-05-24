@@ -4,7 +4,7 @@ const AboutAsync = lazy(
    () =>
       new Promise((resolve) => {
          //@ts-ignore
-         setTimeout(() => resolve(import('./index')), 1500);
+         setTimeout(() => resolve(import('./page')), 1500);
       })
 );
 
