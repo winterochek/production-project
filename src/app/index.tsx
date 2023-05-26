@@ -7,16 +7,16 @@ import { AppRouter } from './providers/routes-provider';
 import './styles/index.scss';
 
 export default function App() {
-  const { theme } = useTheme();
-  return (
-    <div className={cls('app', {}, [theme])}>
-      <Suspense fallback="">
-        <NavBar />
-        <div className="content-page">
-          <SideBar />
-          <AppRouter />
-        </div>
-      </Suspense>
-    </div>
-  );
+   const { theme } = useTheme();
+   return (
+      <div className={cls('app', {}, [theme])}>
+         <Suspense fallback=''>
+            <NavBar />
+            <div className='content-page'>
+               <SideBar />
+               <AppRouter />
+            </div>
+         </Suspense>
+      </div>
+   );
 }
