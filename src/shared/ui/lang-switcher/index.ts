@@ -1,3 +1,3 @@
-import LangSwitcher from "./ui/component";
+import LangSwitcher from './ui/component';
 
-export {LangSwitcher}
+export { LangSwitcher };

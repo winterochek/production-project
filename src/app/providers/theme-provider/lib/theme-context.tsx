@@ -14,4 +14,4 @@ const ThemeContext = createContext<IThemeContext>({});
 
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
 
-export default ThemeContext
+export default ThemeContext;

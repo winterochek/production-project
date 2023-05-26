@@ -10,14 +10,14 @@ interface Props {
 }
 
 export default function ThemeSwitcher({ className }: Props) {
-   const { theme, toggleTheme } = useTheme();
-   return (
-      <Button
-         theme={ThemeButton.CLEAR}
-         className={cls(cl.ThemeSwitcher, {}, [className])}
-         onClick={toggleTheme}
-      >
-         {theme === Theme.LIGHT ? <LightIcon /> : <DarkIcon />}
-      </Button>
-   );
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <Button
+      theme={ThemeButton.CLEAR}
+      className={cls(cl.ThemeSwitcher, {}, [className])}
+      onClick={toggleTheme}
+    >
+      {theme === Theme.LIGHT ? <LightIcon /> : <DarkIcon />}
+    </Button>
+  );
 }

@@ -1,6 +1,6 @@
 import cls from 'shared/lib/class-names';
-import cl from './styles.module.scss';
 import { Link, LinkProps } from 'react-router-dom';
+import cl from './styles.module.scss';
 
 export enum AppLinkTheme {
    PRIMARY = 'primary',
@@ -14,19 +14,19 @@ interface Props extends LinkProps {
 }
 
 export default function AppLink({
-   className,
-   children,
-   to,
-   theme = AppLinkTheme.PRIMARY,
-   ...props
+  className,
+  children,
+  to,
+  theme = AppLinkTheme.PRIMARY,
+  ...props
 }: Props) {
-   return (
-      <Link
-         className={cls(cl.AppLink, {}, [className, cl[theme]])}
-         to={to}
-         {...props}
-      >
-         {children}
-      </Link>
-   );
+  return (
+    <Link
+      className={cls(cl.root, {}, [className, cl[theme]])}
+      to={to}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
 }

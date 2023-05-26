@@ -6,17 +6,17 @@ type ReturnType = {
    theme: Theme;
 };
 const useTheme = (): ReturnType => {
-   const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
-   const toggleTheme = () => {
-      const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-      setTheme(newTheme);
-      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
-   };
-   return {
-      theme,
-      toggleTheme,
-   };
+  const toggleTheme = () => {
+    const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+    setTheme(newTheme);
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+  };
+  return {
+    theme,
+    toggleTheme,
+  };
 };
 
 export default useTheme;
