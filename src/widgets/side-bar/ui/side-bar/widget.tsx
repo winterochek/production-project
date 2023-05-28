@@ -1,5 +1,6 @@
 import cls from 'shared/lib/class-names';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Button } from 'shared/ui/app-button';
 import { ThemeSwitcher } from 'shared/ui/theme-switcher';
 import { LangSwitcher } from 'shared/ui/lang-switcher';
 import cl from './styles.module.scss';
@@ -9,17 +10,22 @@ interface Props {
 }
 
 export default function SideBar({ className }: Props) {
-  const [collapsed, setCollapsed] = useState(false);
-  const onToggle = () => {
-    setCollapsed((v) => !v);
-  };
-  return (
-    <div className={cls(cl.root, { [cl.collapsed]: collapsed }, [className])}>
-      <button onClick={onToggle}>toggle</button>
-      <div className={cl.switchers}>
-        <ThemeSwitcher />
-        <LangSwitcher />
+   const [collapsed, setCollapsed] = useState(false);
+   const onToggle = () => {
+      setCollapsed((v) => !v);
+   };
+   return (
+      <div
+         data-testid={'sidebar'}
+         className={cls(cl.root, { [cl.collapsed]: collapsed }, [className])}
+      >
+         <Button data-testid='sidebar-toggle' onClick={onToggle}>
+            toggle
+         </Button>
+         <div className={cl.switchers}>
+            <ThemeSwitcher />
+            <LangSwitcher />
+         </div>
       </div>
-    </div>
-  );
+   );
 }

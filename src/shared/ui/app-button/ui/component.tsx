@@ -12,14 +12,14 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({
-  className,
-  children,
-  theme,
-  ...props
+   className,
+   children,
+   theme,
+   ...props
 }: Props) {
-  return (
-    <button className={cls(cl.root, {}, [className, cl[theme]])} {...props}>
-      {children}
-    </button>
-  );
+   return (
+      <button className={cls(cl.root, {}, [className, cl[theme]])} {...props}>
+         {children}
+      </button>
+   );
 }
