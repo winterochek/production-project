@@ -1,6 +1,6 @@
 require('path')
 
-export default {
+module.exports = {
    clearMocks: true,
    testEnvironment: 'jsdom',
    coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
