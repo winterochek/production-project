@@ -1,6 +1,6 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 import { BuildOptions } from './types/config';
+import { buildCssLoader } from './loaders/buildCssLoader';
 
 export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
   const babelLoader = {
@@ -32,24 +32,7 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     test: /\.(png|jpe?g|gif)$/i,
     use: [{ loader: 'file-loader' }],
   };
-  const cssLoader = {
-    test: /\.s[ac]ss$/i,
-    use: [
-      !isDev ? MiniCssExtractPlugin.loader : 'style-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            auto: (resPath: string) => Boolean(resPath.includes('.module')),
-            localIdentName: isDev
-              ? '[path][name]__[local]--[hash:base64:5]'
-              : '[hash:base64:8]',
-          },
-        },
-      },
-      'sass-loader',
-    ],
-  };
+  const cssLoader = buildCssLoader(isDev)
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
