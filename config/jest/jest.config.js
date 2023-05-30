@@ -1,4 +1,4 @@
-import path from 'path';
+require('path')
 
 export default {
    clearMocks: true,
