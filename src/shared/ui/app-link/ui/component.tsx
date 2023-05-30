@@ -3,14 +3,14 @@ import { Link, LinkProps } from 'react-router-dom';
 import cl from './styles.module.scss';
 
 export enum AppLinkTheme {
-   PRIMARY = 'primary',
-   SECONDARY = 'secondary',
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  RED = 'red',
 }
 
 interface Props extends LinkProps {
-   className?: string;
-   //    children: JSX.Element | string;
-   theme?: AppLinkTheme;
+  className?: string;
+  theme?: AppLinkTheme;
 }
 
 export default function AppLink({

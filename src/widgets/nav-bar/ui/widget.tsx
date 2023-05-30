@@ -1,9 +1,9 @@
-import AppLink, { AppLinkTheme } from 'shared/ui/app-link/components';
+import { AppLinkTheme, AppLink } from 'shared/ui/app-link';
 import cls from 'shared/lib/class-names';
 import cl from './styles.module.scss';
 
 interface Props {
-   className?: string;
+  className?: string;
 }
 
 export default function NavBar({ className }: Props) {

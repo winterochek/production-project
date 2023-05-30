@@ -1,22 +1,31 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button, { ThemeButton } from './component';
 import { Theme } from 'app/providers/theme-provider';
 import { ThemeDecorator } from 'shared/config/storybook/theme-decorator/decorator';
 
-
-
 export default {
     title: 'shared/Button',
     component: Button,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: {
+            control: 'color'
+        },
+        theme: {
+            control: {
+                type: 'select',
+                options: [ThemeButton.CLEAR, ThemeButton.OUTLINE, 'no theme']
+            }
+        },
+        disabled: {
+            control: 'boolean'
+        }
     },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
+
 Primary.args = {
     children: 'Text',
 };
