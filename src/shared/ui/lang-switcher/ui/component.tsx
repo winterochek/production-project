@@ -4,10 +4,11 @@ import { Button, ThemeButton } from 'shared/ui/app-button';
 import cl from './styles.module.scss';
 
 interface Props {
-   className?: string;
+  className?: string;
+  short?: boolean
 }
 
-export default function LangSwitcher({ className }: Props) {
+export default function LangSwitcher({ className, short }: Props) {
   const { t, i18n } = useTranslation();
   const toggle = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
@@ -19,7 +20,7 @@ export default function LangSwitcher({ className }: Props) {
       theme={ThemeButton.CLEAR}
       onClick={toggle}
     >
-      {t('Язык')}
+      {!short ? 'Русский' : 'Ru'}
     </Button>
   );
 }
