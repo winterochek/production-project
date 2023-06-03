@@ -1,22 +1,24 @@
-import { AppLinkTheme, AppLink } from 'shared/ui/app-link';
+import { Button, ThemeButton } from 'shared/ui/app-button';
+
 import cls from 'shared/lib/class-names';
 import cl from './styles.module.scss';
+import { Modal } from 'shared/ui/modal';
+import { useCallback, useState } from 'react';
 
 interface Props {
   className?: string;
 }
 
 export default function NavBar({ className }: Props) {
+  const [isAuthModal, setIsAuthModal] = useState(false)
+  const handleOpen = useCallback(() => setIsAuthModal(true), [])
+  const handleClose = useCallback(() => setIsAuthModal(false), [])
   return (
     <nav className={cls(cl.navbar, {}, [className])}>
-      <div className={cl.links}>
-        <AppLink theme={AppLinkTheme.SECONDARY} to="/">
-          MAIN
-        </AppLink>
-        <AppLink theme={AppLinkTheme.SECONDARY} to="/about">
-          ABOUT
-        </AppLink>
-      </div>
+      <section className={cl.links}>
+        <Button onClick={handleOpen} theme={ThemeButton.CLEAR_INVERTED}>Войти</Button>
+      </section>
+      <Modal isOpen={isAuthModal} onClose={handleClose}><div>Hello modal!</div></Modal>
     </nav>
   );
 }
