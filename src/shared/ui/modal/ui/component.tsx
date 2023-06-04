@@ -5,7 +5,6 @@ import cls from 'shared/lib/class-names'
 import cl from './styles.module.scss'
 
 interface Props {
-    className?: string;
     children?: JSX.Element;
     isOpen: boolean
     onClose: () => void
@@ -13,7 +12,7 @@ interface Props {
 
 const ANIMATION_DELAY = 300;
 
-export default function Modal({ className, children, isOpen, onClose }: Props) {
+export default function Modal({ children, isOpen, onClose }: Props) {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -53,7 +52,7 @@ export default function Modal({ className, children, isOpen, onClose }: Props) {
 
     return (
         <Portal>
-            <div className={cls(cl.root, mods, [className])}>
+            <div className={cls(cl.root, mods)}>
                 <div className={cl.overlay} onClick={closeHandler}>
                     <div className={cl.content} onClick={onContentClick}>
                         {children}

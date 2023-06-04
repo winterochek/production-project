@@ -1,10 +1,9 @@
+import { useCallback, useState } from 'react';
 import { Button, ThemeButton } from 'shared/ui/app-button';
+import { Modal } from 'shared/ui/modal';
 
 import cls from 'shared/lib/class-names';
 import cl from './styles.module.scss';
-import { Modal } from 'shared/ui/modal';
-import { useCallback, useState } from 'react';
-
 interface Props {
   className?: string;
 }
