@@ -7,14 +7,17 @@ import cl from './styles.module.scss'
 interface Props {
     className?: string,
     children?: JSX.Element;
-    isOpen: boolean
-    onClose: () => void
+    isOpen: boolean;
+    onClose: () => void;
+    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
-export default function Modal({ className, children, isOpen, onClose }: Props) {
+export default function Modal({ className, children, isOpen, onClose, lazy }: Props) {
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false)
+
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
     const closeHandler = useCallback(() => {
         const handler = () => {
@@ -49,6 +52,15 @@ export default function Modal({ className, children, isOpen, onClose }: Props) {
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);
+
+    useEffect(() => {
+        isOpen && setIsMounted(true)
+    }, [isOpen])
+
+    if (lazy && !isMounted) {
+        return null
+    }
+
 
     return (
         <Portal>

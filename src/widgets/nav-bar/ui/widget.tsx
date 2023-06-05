@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
 import { Button, ThemeButton } from 'shared/ui/app-button';
-import { Modal } from 'shared/ui/modal';
 
 import cls from 'shared/lib/class-names';
 import cl from './styles.module.scss';
+import { LoginModal } from 'features/auth-by-username';
 interface Props {
   className?: string;
 }
@@ -17,7 +17,7 @@ export default function NavBar({ className }: Props) {
       <section className={cl.links}>
         <Button onClick={handleOpen} theme={ThemeButton.CLEAR_INVERTED}>Войти</Button>
       </section>
-      <Modal isOpen={isAuthModal} onClose={handleClose}><div>Hello modal!</div></Modal>
+      <LoginModal isOpen={isAuthModal} onClose={handleClose}/>
     </nav>
   );
 }
