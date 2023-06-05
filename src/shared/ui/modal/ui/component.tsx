@@ -3,9 +3,9 @@ import { Portal } from 'shared/ui/portal';
 
 import cls from 'shared/lib/class-names'
 import cl from './styles.module.scss'
-import { useTheme } from 'app/providers/theme-provider';
 
 interface Props {
+    className?: string,
     children?: JSX.Element;
     isOpen: boolean
     onClose: () => void
@@ -13,11 +13,9 @@ interface Props {
 
 const ANIMATION_DELAY = 300;
 
-export default function Modal({ children, isOpen, onClose }: Props) {
+export default function Modal({ className, children, isOpen, onClose }: Props) {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
-    const { theme } = useTheme()
-
     const closeHandler = useCallback(() => {
         const handler = () => {
             setIsClosing(true);
@@ -54,7 +52,7 @@ export default function Modal({ children, isOpen, onClose }: Props) {
 
     return (
         <Portal>
-            <div className={cls(cl.root, mods, [theme])}>
+            <div className={cls(cl.root, mods, [className])}>
                 <div className={cl.overlay} onClick={closeHandler}>
                     <div className={cl.content} onClick={onContentClick}>
                         {children}

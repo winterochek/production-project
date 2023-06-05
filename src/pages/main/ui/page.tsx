@@ -1,4 +1,3 @@
-import { Counter } from 'entities/counter';
 import { useTranslation } from 'react-i18next';
 
 export default function Main() {
@@ -6,7 +5,6 @@ export default function Main() {
    return (
       <div>
          {t('Главная')}
-         <Counter />
       </div>
    );
 }
