@@ -41,16 +41,18 @@ function rootInput({ className, value, onChange, autoFocus, type = 'text', place
             setFocused(true)
             inputRef.current?.focus()
         }
-    }, [autoFocus])
+    }, [autoFocus]);
 
 
-    return <div className={cls(cl.root, {}, [className])}>
-        {placeholder && <div className={cl.placeholder}>{`${placeholder} >`}</div>}
-        <div className={cl.inputWrapper}>
-            <input ref={inputRef} onBlur={handleOnBlur} onSelect={handleOnSelect} onFocus={handleOnFocus} type={type} value={value} onChange={handleOnChange} className={cl.input} {...rest} />
-            {focused && <span style={{ left: `${linePosition * 7}px` }} className={cl.line} />}
+    return (
+        <div className={cls(cl.root, {}, [className])}>
+            {placeholder && <div className={cl.placeholder}>{`${placeholder} >`}</div>}
+            <div className={cl.inputWrapper}>
+                <input ref={inputRef} onBlur={handleOnBlur} onSelect={handleOnSelect} onFocus={handleOnFocus} type={type} value={value} onChange={handleOnChange} className={cl.input} {...rest} />
+                {focused && <span style={{ left: `${linePosition * 7}px` }} className={cl.line} />}
+            </div>
         </div>
-    </div>
+    )
 }
 
 const Input = memo(rootInput)
