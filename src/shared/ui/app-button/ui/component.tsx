@@ -20,11 +20,13 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
    className?: string;
    theme?: ThemeButton;
    square?: boolean;
-   size?: SizeButton
+   size?: SizeButton;
+   disabled?: boolean;
 }
 
 export default function Button({
    className,
+   disabled,
    children,
    theme,
    size,
@@ -33,9 +35,10 @@ export default function Button({
 }: Props) {
    const mods: Record<string, boolean> = {
       [cl.square]: square,
+      [cl.disabled]: disabled,
    }
    return (
-      <button className={cls(cl.root, mods, [className, cl[theme], cl[size],])} {...props}>
+      <button disabled={!!disabled} className={cls(cl.root, mods, [className, cl[theme], cl[size],])} {...props}>
          {children}
       </button>
    );
