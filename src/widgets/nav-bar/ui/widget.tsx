@@ -5,7 +5,7 @@ import cls from 'shared/lib/class-names';
 import cl from './styles.module.scss';
 import { LoginModal } from 'features/auth-by-username';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/user';
+import { getUserAuthData, userActions } from '../../../entities/user';
 interface Props {
   className?: string;
 }

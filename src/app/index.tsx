@@ -4,7 +4,7 @@ import { useTheme } from 'app/providers/theme-provider';
 import { AppRouter } from './providers/routes-provider';
 import { NavBar } from 'widgets/nav-bar';
 import { SideBar } from 'widgets/side-bar';
-import { userActions } from 'entities/user';
+import { userActions } from '../entities/user';
 
 import cls from 'shared/lib/class-names';
 
