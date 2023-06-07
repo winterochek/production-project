@@ -1,10 +1,11 @@
-import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
+import { DeepPartial, ReducersMapObject, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "../../../../entities/user";
 import { StateSchema } from "./state-schema";
 import { createReducerManager } from "./reducer-manager";
 
-export default function createReduxStore(initialState?: StateSchema) {
+export default function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         user: userReducer,
     }
 
