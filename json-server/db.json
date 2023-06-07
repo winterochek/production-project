@@ -25,5 +25,14 @@
       "password": "admin"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Pavel",
+    "lastname": "Zherebnov",
+    "age": 22,
+    "currency": "RUB",
+    "country": "Ukraine",
+    "city": "Kiev",
+    "username": "admin",
+    "avatar": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/128009228/original/8e8ad34b012b46ebd403bd4157f8fef6bb2c076b/design-minimalist-flat-cartoon-caricature-avatar-in-6-hours.jpg"
+  }
 }

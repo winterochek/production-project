@@ -22,4 +22,6 @@ export default function createReduxStore(initialState?: StateSchema, asyncReduce
     return store
 }
 
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
 

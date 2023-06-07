@@ -9,9 +9,11 @@ interface Props {
 }
 
 export default function LoginModal({ isOpen, onClose }: Props) {
-    return <Modal lazy isOpen={isOpen} onClose={onClose}>
-        <Suspense fallback={<SninnerLoader />}>
-            <LoginForm />
-        </Suspense>
-    </Modal>
+    return (
+        <Modal lazy isOpen={isOpen} onClose={onClose}>
+            <Suspense fallback={<SninnerLoader />}>
+                <LoginForm onSuccess={onClose} />
+            </Suspense>
+        </Modal>
+    )
 }

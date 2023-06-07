@@ -1,23 +1,24 @@
 import { memo, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import loginByUsername from 'features/auth-by-username/model/services/login-by-username/service';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/get-login-state/selector';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/app-button';
 import { Text, TextTheme } from 'shared/ui/app-text';
 import { Input } from 'shared/ui/app-input';
-import { useAsyncReducer } from 'shared/lib/hooks';
+import { useAppDispatch, useAsyncReducer } from 'shared/lib/hooks';
 
 import cls from 'shared/lib/class-names'
 import cl from './styles.module.scss'
 
 export interface Props {
     className?: string;
-    autoFocus?: boolean
+    autoFocus?: boolean;
+    onSuccess: () => void;
 }
 
-function rootLoginForm({ className }: Props) {
-    const dispatch = useDispatch()
+function rootLoginForm({ className, onSuccess }: Props) {
+    const dispatch = useAppDispatch()
     const { username, password, isLoading, error } = useSelector(getLoginState)
 
     // Подключаем логин редюсер асинхронно
@@ -31,9 +32,12 @@ function rootLoginForm({ className }: Props) {
         dispatch(loginActions.setPassword(password))
     }, [dispatch])
 
-    const handleClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }))
-    }, [dispatch, username, password])
+    const handleClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess()
+        }
+    }, [dispatch, username, password, onSuccess])
 
     return <div className={cls(cl.root, {}, [className])}>
         <Text title='Форма авторизации' />
