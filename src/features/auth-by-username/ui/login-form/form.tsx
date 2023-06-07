@@ -1,16 +1,17 @@
 import { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import  loginByUsername  from 'features/auth-by-username/model/services/login-by-username/service';
-import { loginActions } from '../../model/slice/loginSlice';
+import loginByUsername from 'features/auth-by-username/model/services/login-by-username/service';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/get-login-state/selector';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/app-button';
 import { Text, TextTheme } from 'shared/ui/app-text';
 import { Input } from 'shared/ui/app-input';
+import { useAsyncReducer } from 'shared/lib/hooks';
 
 import cls from 'shared/lib/class-names'
 import cl from './styles.module.scss'
 
-interface Props {
+export interface Props {
     className?: string;
     autoFocus?: boolean
 }
@@ -18,6 +19,9 @@ interface Props {
 function rootLoginForm({ className }: Props) {
     const dispatch = useDispatch()
     const { username, password, isLoading, error } = useSelector(getLoginState)
+
+    // Подключаем логин редюсер асинхронно
+    useAsyncReducer('loginForm', loginReducer)
 
     const handleChangeUsername = useCallback((username: string) => {
         dispatch(loginActions.setUserName(username))

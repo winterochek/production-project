@@ -1,6 +1,6 @@
-import { StateSchema } from "./state-schema";
+import { ReduxWithManager, StateSchema, StateSchemaKey } from "./state-schema";
 import createReduxStore from "./store";
 
 export {
-    StateSchema, createReduxStore
+    StateSchema, createReduxStore, ReduxWithManager, StateSchemaKey
 }

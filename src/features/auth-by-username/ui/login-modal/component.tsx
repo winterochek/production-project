@@ -1,5 +1,7 @@
-import LoginForm from '../login-form/form';
+import { Suspense } from 'react';
+import { LoginForm } from '../login-form';
 import { Modal } from 'shared/ui/modal';
+import { SninnerLoader } from 'shared/ui/sninner-loader';
 
 interface Props {
     isOpen: boolean;
@@ -8,6 +10,8 @@ interface Props {
 
 export default function LoginModal({ isOpen, onClose }: Props) {
     return <Modal lazy isOpen={isOpen} onClose={onClose}>
-        <LoginForm />
+        <Suspense fallback={<SninnerLoader />}>
+            <LoginForm />
+        </Suspense>
     </Modal>
 }

@@ -1,20 +1,20 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Form from './form';
+import LoginForm from './form';
 import { Theme } from 'app/providers/theme-provider';
 import { ThemeDecorator } from 'shared/config/storybook/theme-decorator/decorator';
 import { StoreDecorator } from 'shared/config/storybook/store-decorator/decorator';
 
 export default {
-    title: 'feat/Form',
-    component: Form,
+    title: 'feat/LoginForm',
+    component: LoginForm,
     argTypes: {
         backgroundColor: {
             control: 'color'
         }
     },
-} as ComponentMeta<typeof Form>;
+} as ComponentMeta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />;
+const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
