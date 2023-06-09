@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { AppLink, AppLinkTheme } from 'shared/ui/app-link';
 import { SidebarItemInterface } from 'widgets/side-bar/model/items';
 

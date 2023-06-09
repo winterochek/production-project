@@ -1,9 +1,12 @@
+import { profileReducer } from "entities/profile";
+import { useAsyncReducer } from "shared/lib/hooks";
 
 export default function Profile() {
-    return (
-       <div>
-          Profile
-       </div>
-    );
- }
- 
+   useAsyncReducer('profile', profileReducer)
+
+   return (
+      <div>
+         Profile
+      </div>
+   );
+}
