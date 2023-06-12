@@ -1,6 +1,6 @@
-import { ReduxWithManager, StateSchema, StateSchemaKey } from "./state-schema";
+import { ReduxWithManager, StateSchema, StateSchemaKey, ThunkExtraArg } from "./state-schema";
 import createReduxStore from "./store";
 
 export {
-    StateSchema, createReduxStore, ReduxWithManager, StateSchemaKey
+    StateSchema, createReduxStore, ReduxWithManager, StateSchemaKey, ThunkExtraArg
 }

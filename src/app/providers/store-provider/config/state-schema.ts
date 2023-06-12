@@ -2,6 +2,8 @@ import { Action, AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapOb
 import { UserSchema } from '../../../../entities/user'
 import { LoginSchema } from "features/auth-by-username";
 import { ProfileSchema } from 'entities/profile';
+import { AxiosInstance } from 'axios';
+import { NavigateFunction } from 'react-router-dom';
 
 export interface StateSchema {
     user: UserSchema,
@@ -14,6 +16,11 @@ export type StateSchemaKey = keyof StateSchema;
 
 export type ReducersList = {
     [key in StateSchemaKey]: Reducer
+}
+
+export interface ThunkExtraArg {
+    api: AxiosInstance,
+    navigate: NavigateFunction
 }
 
 export interface ReducerManager {
