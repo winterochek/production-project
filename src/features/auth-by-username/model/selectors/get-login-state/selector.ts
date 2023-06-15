@@ -5,4 +5,4 @@ const initialValues: LoginSchema = {
     username: '', password: '', error: '', isLoading: false
 }
 
-export const getLoginState = (state: StateSchema) => state?.loginForm || initialValues;
+export const getLoginState = (state?: StateSchema) => state?.loginForm || initialValues;

@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Portal } from 'shared/ui/portal';
 
-import cls from 'shared/lib/class-names'
+import cls, { Mods } from 'shared/lib/class-names'
 import cl from './styles.module.scss'
 
 interface Props {
@@ -18,7 +18,7 @@ export default function Modal({ className, children, isOpen, onClose, lazy }: Pr
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false)
 
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const closeHandler = useCallback(() => {
         const handler = () => {
             setIsClosing(true);
@@ -27,7 +27,8 @@ export default function Modal({ className, children, isOpen, onClose, lazy }: Pr
                 setIsClosing(false);
             }, ANIMATION_DELAY);
         }
-        onClose && handler()
+        handler()
+
     }, [onClose]);
 
     const onKeyDown = useCallback((e: KeyboardEvent) => {
@@ -40,7 +41,7 @@ export default function Modal({ className, children, isOpen, onClose, lazy }: Pr
         e.stopPropagation();
     };
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cl.opened]: isOpen,
         [cl.isClosing]: isClosing,
     }
@@ -48,7 +49,7 @@ export default function Modal({ className, children, isOpen, onClose, lazy }: Pr
     useEffect(() => {
         isOpen && window.addEventListener('keydown', onKeyDown);
         return () => {
-            clearTimeout(timerRef.current);
+            timerRef.current && clearTimeout(timerRef.current);
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);

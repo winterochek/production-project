@@ -1,4 +1,3 @@
-import { DeepPartial } from "@reduxjs/toolkit"
 import { StateSchema } from "app/providers/store-provider"
 import { getLoginState } from "./selector"
 
@@ -21,7 +20,7 @@ describe('getLoginState selector', () => {
             })
     })
     test('should return default values', () => {
-        expect(getLoginState(undefined))
+        expect(getLoginState())
             .toEqual({
                 isLoading: false,
                 password: '',

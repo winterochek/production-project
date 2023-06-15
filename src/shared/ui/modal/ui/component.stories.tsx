@@ -16,7 +16,7 @@ export const ModalWindow = Template.bind({});
 ModalWindow.args = {
     isOpen: true,
     onClose: () => 1,
-    children: 'Hello world!',
+    children: <span>Hello world!</span>,
 };
 
 export const LoadingContentModal = Template.bind({})

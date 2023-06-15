@@ -1,4 +1,4 @@
-import cls from 'shared/lib/class-names';
+import cls, { Mods } from 'shared/lib/class-names';
 import { ButtonHTMLAttributes, ComponentProps } from 'react';
 import cl from './styles.module.scss';
 
@@ -28,12 +28,12 @@ export default function Button({
    className,
    disabled,
    children,
-   theme,
-   size,
+   theme = ThemeButton.OUTLINE,
+   size = SizeButton.M,
    square,
    ...props
 }: Props) {
-   const mods: Record<string, boolean> = {
+   const mods: Mods = {
       [cl.square]: square,
       [cl.disabled]: disabled,
    }

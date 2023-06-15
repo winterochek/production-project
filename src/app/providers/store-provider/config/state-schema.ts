@@ -20,7 +20,7 @@ export type ReducersList = {
 
 export interface ThunkExtraArg {
     api: AxiosInstance,
-    navigate: NavigateFunction
+    navigate?: NavigateFunction
 }
 
 export interface ReducerManager {

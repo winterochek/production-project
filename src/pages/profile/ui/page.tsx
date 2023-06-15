@@ -1,11 +1,18 @@
-import { profileReducer } from "../../../entities/profile";
-import { useAsyncReducer } from "shared/lib/hooks";
+import { useEffect } from "react";
+import { ProfileCard, fetchProfileData, profileReducer } from "../../../entities/profile";
+import { useAppDispatch, useAsyncReducer } from "shared/lib/hooks";
 
 export default function Profile() {
-   useAsyncReducer('profile', profileReducer)
+   useAsyncReducer('profile', profileReducer);
+   const dispatch = useAppDispatch()
+
+   useEffect(() => {
+      dispatch(fetchProfileData())
+   }, [dispatch])
+
    return (
       <div>
-         Profile
+         <ProfileCard />
       </div>
    );
 }
